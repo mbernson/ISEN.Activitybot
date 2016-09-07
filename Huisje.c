@@ -12,14 +12,20 @@ typedef enum { CLOCKWISE, COUNTERCLOCKWISE } rotation;
 
 void spin(float multiplier, rotation direction) {
   float full_rotation = (wheel_base * pi) / millimeters_per_tick;
-  if(direction == CLOCKWISE)
+  if(direction == CLOCKWISE) {
+    printf("drive_goto(%f, %f)\n", full_rotation*multiplier, -full_rotation*multiplier);
     drive_goto(full_rotation*multiplier, -full_rotation*multiplier);
-  else if(direction == COUNTERCLOCKWISE)
+  } else if(direction == COUNTERCLOCKWISE) {
+    printf("drive_goto(%f, %f)\n", -full_rotation*multiplier, full_rotation*multiplier);
     drive_goto(-full_rotation*multiplier, full_rotation*multiplier);
+  }    
+  pause(200);
 }  
 
 void forward(float distance) {
+  printf("drive_goto(%f, %f)\n", distance, distance);
   drive_goto(distance, distance);
+  pause(200);
 }  
 
 int main()
