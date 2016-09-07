@@ -7,6 +7,7 @@
 const float wheel_base = 105.8;
 const float pi = 3.1415;
 const float millimeters_per_tick = 3.25;
+const float distance = 20;
 
 typedef enum { CLOCKWISE, COUNTERCLOCKWISE } rotation;
 
@@ -34,9 +35,23 @@ int main()
   
   printf("Starting\n");
   printf("Moving forward 1 step\n");
-  forward(line_distance);
+  drive_goto(distance, distance);
   printf("Turning %i degrees ccw\n", 180 - 45);
-  spin((180 - 45) / 360, COUNTERCLOCKWISE);
+  spin(0.375, COUNTERCLOCKWISE);
   printf("Moving forward 1 step\n");
-  forward(line_distance);
+  drive_goto(28.28, 28.28);
+  printf("Turning %i degrees cw\n", 180 - 45);
+  spin(0.375, CLOCKWISE);
+  printf("Moving forward 1 step\n");
+  drive_goto(distance, distance);
+  spin(0.375, COUNTERCLOCKWISE);
+  drive_goto(14.14, 14.14);
+  spin(0.25, COUNTERCLOCKWISE);
+  drive_goto(14.14, 14.14);
+  spin(0.125, COUNTERCLOCKWISE);
+  drive_goto(distance, distance);
+  spin(0.375, COUNTERCLOCKWISE);
+  drive_goto(28.28, 28.28);
+  spin(0.375, CLOCKWISE);
+  drive_goto(distance, distance);
 }
