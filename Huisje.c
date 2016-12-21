@@ -8,7 +8,7 @@ const float wheel_base = 105.8;
 const float pi = 3.1415;
 const float millimeters_per_tick = 3.25;
 
-const float house_size = 30;
+const float house_size = 60;
 
 typedef enum { CLOCKWISE, COUNTERCLOCKWISE } rotation;
 
@@ -31,14 +31,14 @@ void spin(float multiplier, rotation direction) {
     drive_goto(-turn_distance, turn_distance);
   }      
   
-  pause(200);
+  pause(500);
 }  
 
 void forward(float distance) 
 {
-  print("\nDriving distance %d!", distance);
+  print("\nDriving distance forward %f!", distance);
   drive_goto(distance, distance);
-  pause(200);
+  pause(500);
 }  
 
 float calculateAngle(float x, float y) 
@@ -99,4 +99,6 @@ void better_house()
   
   //15. Go forward
   forward(house_size);
+  
+  drive_speed(0, 0);
 }   
